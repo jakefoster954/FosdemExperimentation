@@ -75,3 +75,9 @@ Add cargo to PATH. You can do this by adding the following to your .zshrc:
 
 #### Install MLC
 `cargo install mlc`
+
+### Useful commands
+ - `mlc`
+   - Run MLC
+ - `mlc {{ PATH }}`
+   - Run MLC on a certain directory or path
