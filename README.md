@@ -56,7 +56,7 @@ Define Vale report output format
 #### Useful commands
  - `vale sync`
    - Load the .vale.ini file
- - 'vale {{ FILENAME }}'
+ - `vale {{ FILENAME }}`
    - Run a vale scan on {{ FILENAME }}
 
 ## MLC
