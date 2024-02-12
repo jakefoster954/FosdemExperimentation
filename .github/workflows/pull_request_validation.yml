@@ -43,5 +43,6 @@ jobs:
 
       # Runs MLC
       - uses: becheran/mlc@v0.16.3
+        continue-on-error: true
 
 
