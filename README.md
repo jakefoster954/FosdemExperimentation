@@ -9,6 +9,13 @@ test the CI pipeline.
 
 ` brew install act`
 
+### Issues
+This doesn't currently work. Receives the following error:
+
+`❗  ::error::Error: Unable to locate executable file: gem. Please verify either the file path exists or the file can be found within a directory specified by the PATH environment variable. Also check the file mode to verify the file is executable.`
+
+This does not happen in GitHub.
+
 ## Vale
 Vale is an open source, command line tool that helps you get real time feedback on your writing style as you write.
 
