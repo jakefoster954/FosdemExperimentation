@@ -33,15 +33,15 @@ jobs:
           files: ValeExperimentation.md
 
   mlc:
-    - name: runner / mlc
-      
-      runs-on: ubuntu-latest
+    name: runner / mlc
 
-      steps:
-        # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-        - uses: actions/checkout@v4
+    runs-on: ubuntu-latest
 
-        # Runs MLC
-        - uses: becheran/mlc@v0.16.3
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v4
+
+      # Runs MLC
+      - uses: becheran/mlc@v0.16.3
 
 
