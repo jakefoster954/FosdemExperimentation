@@ -28,7 +28,7 @@ Vale can be used to validate Markdown, HTML, line comments, block comments and m
 
 
 ### Getting Started
-Vale has comprehensive documentation which can be found (here)[https://vale.sh/docs/vale-cli/overview/].
+Vale has comprehensive documentation which can be found [here](https://vale.sh/docs/vale-cli/overview/).
 
 #### Installation
 To install Vale, run the following command:
@@ -58,3 +58,20 @@ Define Vale report output format
    - Load the .vale.ini file
  - 'vale {{ FILENAME }}'
    - Run a vale scan on {{ FILENAME }}
+
+## MLC
+MLC stands for Markup link checker. It validates links in Markdown and HTML files in your solution.
+
+Documentation on MLC can be found [here](https://github.com/becheran/mlc?tab=readme-ov-file)
+
+### Installation
+MLC can be installed via cargo - rust's package manager
+
+#### Install Cargo
+` brew install cargo`
+
+Add cargo to PATH. You can do this by adding the following to your .zshrc:
+`export PATH=$PATH:~/.cargo/bin/`
+
+#### Install MLC
+`cargo install mlc`
