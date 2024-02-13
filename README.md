@@ -115,3 +115,76 @@ This will generate a HTML report in *StrykerOutput*
 When installing, you can use `--ignore-failed-sources` if you can't restore any package sources
 to treat package source failures as warning. Documentation can be found
 [here](https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-tool-install)
+
+## Postgres
+Analysis of Postgres cost and performance depending on structure of
+database.
+
+### Installation
+Ensure you have **Docker Desktop** installed and running.
+
+#### Build the demo Postgres image
+From project root, build the docker image. This is a Postgres container
+that executes all \*.sql files located in the project root.
+
+`docker build -t custom-postgres .`
+
+You can view the newly created image by running `docker images`.
+
+Next create a container from the newly created image.
+
+`docker run -d --name my-postgres-container -e POSTGRES_PASSWORD=password custom-postgres:latest`
+
+- "-d" flag specifies that the container should execute in the background
+- "--name" option assigns the container’s name. For example, "basic-postgres"
+- "-p" assigns the port for the container. For example, "5432:5432"
+- "-e POSTGRES\_PASSWORD" configures the password to be "password"
+- "postgres" is the official Docker image
+
+You must provide the environment variable *POSTGRES_PASSWORD*.
+
+You can verify the container is running via `docker ps`.
+
+#### Interact with container
+
+`docker exec -it my-postgres-container bash`
+
+Connect to the Postgres database
+
+`psql -h localhost -U postgres`
+
+- "-h" flag is the hostname
+- "-U" is the user. "postgres" is default admin
+
+### Useful commands
+
+#### Show databases
+
+`\l;`
+
+#### Connect to database
+
+`\c my_first_database;`
+
+#### Show tables
+Basic view:
+
+`\dt;`
+
+Show tables including size and description:
+
+`\dt+;`
+
+#### Evaluate performance
+
+Show the query plan for a query:
+
+`EXPLAIN query;`
+
+Show and execute the query plan for a query
+
+`EXPLAIN ANALYZE query;`
+
+Collect statistics:
+
+`ANALYZE table_name;`
