@@ -18,10 +18,10 @@ public class AgeController : Controller
     }
 
     [HttpGet("{age}")]
-    public async Task<IActionResult> Get(int age)
+    public Task<IActionResult> Get(int age)
     {
         _logger.LogInformation("'IsAdult' running with age: {Age}", age);
         var result = _ageService.IsAdult(age);
-        return new OkObjectResult(result);
+        return Task.FromResult<IActionResult>(new OkObjectResult(result));
     }
 }
