@@ -44,3 +44,6 @@ msbuild.wrn
 
 # appsettings.development.json
 appsettings.development.json
+
+# Stryker results
+/StrykerOutput
