@@ -45,4 +45,24 @@ jobs:
       - uses: becheran/mlc@v0.16.3
         continue-on-error: true
 
+  stryker:
+    name: runner / stryker
 
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v4
+
+      # Restore tool manifest so dotnet Stryker can be used
+      - uses: actions/setup-dotnet@v4
+      - run: dotnet tool restore --tool-manifest BasicApi/.config/dotnet-tools.json
+
+      - working-directory: ./BasicApi
+        run: dotnet stryker
+
+      # Uplaod report as an artifact
+      - uses: actions/upload-artifact@v4
+        with:
+          name: html-report
+          path: BasicApi/StrykerOutput/**/**/*.html
