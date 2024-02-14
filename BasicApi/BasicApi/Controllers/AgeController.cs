@@ -1,6 +1,7 @@
 namespace BasicApi.Controllers;
 
 using Constants;
+using Dto;
 using Microsoft.AspNetCore.Mvc;
 using Services;
 
@@ -17,11 +18,23 @@ public class AgeController : Controller
         _logger = logger;
     }
 
-    [HttpGet("{age}")]
-    public Task<IActionResult> Get(int age)
+    /// <summary>
+    /// Checks if an age is legally an adult
+    /// </summary>
+    /// <param name="age"></param>
+    /// <returns>If they are an adult</returns>
+    /// <response code="200">If the age provided is legally an adult</response>
+    [HttpGet("{age:int}")]
+    [Produces("application/json")]
+    [ProducesResponseType(typeof(AgeDto), StatusCodes.Status200OK)]
+    public Task<IActionResult> Get([FromRoute]int age)
     {
         _logger.LogInformation("'IsAdult' running with age: {Age}", age);
         var result = _ageService.IsAdult(age);
-        return Task.FromResult<IActionResult>(new OkObjectResult(result));
+        return Task.FromResult<IActionResult>(
+            new OkObjectResult(new AgeDto
+            {
+                IsAdult = result
+            }));
     }
 }
